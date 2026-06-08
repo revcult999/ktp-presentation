@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en" data-themes="japanese-minimal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Career Skills in Business — KTP Guest Lecture</title>
+<link rel="stylesheet" href="html-ppt-skill/assets/fonts.css">
+<link rel="stylesheet" href="html-ppt-skill/assets/base.css">
+<link rel="stylesheet" id="theme-link" href="html-ppt-skill/assets/themes/japanese-minimal.css">
+<link rel="stylesheet" href="html-ppt-skill/assets/animations/animations.css">
+<style>
+/* ─── Deck-scoped layout styles ─── */
+.ktp-lecture .slide { padding: 72px 96px; }
+
+.ktp-lecture .kicker {
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 18px; font-weight: 600;
+}
+.ktp-lecture .h1 {
+  font-family: var(--font-serif); font-size: clamp(40px, 5.2vw, 68px);
+  line-height: 1.1; letter-spacing: -.02em; margin: 0 0 24px; font-weight: 500;
+}
+.ktp-lecture .h2 {
+  font-family: var(--font-serif); font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1.2; letter-spacing: -.01em; margin: 0 0 28px; font-weight: 500;
+}
+.ktp-lecture .lede { font-size: 20px; line-height: 1.6; color: var(--text-2); }
+.ktp-lecture .accent { color: var(--accent); }
+.ktp-lecture .dim { color: var(--text-2); font-size: 14px; line-height: 1.6; margin: 0; }
+.ktp-lecture .mt-s { margin-top: 10px; }
+.ktp-lecture .mt-m { margin-top: 20px; }
+.ktp-lecture .mt-l { margin-top: 32px; }
+.ktp-lecture .tc { text-align: center; }
+
+/* Grid helpers */
+.ktp-lecture .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.ktp-lecture .g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.ktp-lecture .g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+
+/* Cards */
+.ktp-lecture .card {
+  background: var(--surface); border: 1px solid var(--border); padding: 28px 30px;
+}
+.ktp-lecture .card.top-accent { border-top: 3px solid var(--accent); }
+.ktp-lecture .card h4 { margin: 0 0 10px; font-size: 17px; font-weight: 600; }
+.ktp-lecture .card .icon { font-size: 34px; display: block; margin-bottom: 12px; line-height: 1; }
+
+/* Speaker block (cover) */
+.ktp-lecture .speaker { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
+.ktp-lecture .speaker .av { width: 44px; height: 44px; background: var(--grad); flex-shrink: 0; }
+.ktp-lecture .speaker b { display: block; font-size: 16px; }
+.ktp-lecture .speaker span { font-size: 13px; color: var(--text-3); }
+
+/* Logo bar (cover) */
+.ktp-lecture .logo-bar {
+  display: flex; align-items: center; gap: 36px; margin-top: 32px;
+  padding-top: 24px; border-top: 1px solid var(--border);
+}
+.ktp-lecture .logo-bar img {
+  height: 44px; width: auto; object-fit: contain; opacity: .85;
+  filter: grayscale(20%);
+}
+.ktp-lecture .logo-bar .logo-sep {
+  width: 1px; height: 36px; background: var(--border-strong); flex-shrink: 0;
+}
+
+/* Deck footer */
+.ktp-lecture .deck-footer {
+  position: absolute; bottom: 32px; left: 96px; right: 96px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 11px; color: var(--text-3); letter-spacing: .08em;
+  border-top: 1px solid var(--border); padding-top: 12px;
+}
+
+/* ─── Slide 2: Big stat ─── */
+.big-stat { text-align: center; padding: 12px 0; }
+.big-stat .num-wrap {
+  font-family: var(--font-serif); line-height: .88; display: inline-flex;
+  align-items: flex-start; color: var(--accent); letter-spacing: -.04em;
+}
+.big-stat .num-wrap .n { font-size: clamp(140px, 19vw, 220px); font-weight: 500; }
+.big-stat .num-wrap .pct { font-size: clamp(70px, 9vw, 110px); padding-top: 18px; }
+.big-stat .subtitle { font-size: 24px; color: var(--text-1); margin-top: 14px; font-weight: 500; }
+.big-stat .sub2 { font-size: 17px; color: var(--text-2); margin-top: 8px; }
+
+/* ─── Slide 3: Pivot quote ─── */
+.pivot-quote { max-width: 980px; }
+.pivot-quote .mark {
+  font-family: var(--font-serif); font-size: 110px; line-height: .8;
+  color: var(--accent); opacity: .35; display: block;
+}
+.pivot-quote blockquote {
+  font-family: var(--font-serif); font-size: clamp(30px, 3.8vw, 50px);
+  line-height: 1.3; font-style: italic; font-weight: 500;
+  margin: -28px 0 20px; color: var(--text-1);
+}
+.pivot-quote .attr { font-size: 16px; color: var(--text-3); letter-spacing: .08em; }
+
+/* ─── Slide 4: Timeline ─── */
+.ktp-tl { position: relative; margin-top: 36px; }
+.ktp-tl::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 42px;
+  height: 1px; background: var(--border-strong);
+}
+.ktp-tl .row { display: grid; grid-template-columns: repeat(5,1fr); gap: 18px; }
+.ktp-tl .item { position: relative; padding-top: 72px; text-align: center; }
+.ktp-tl .dot {
+  position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
+  width: 18px; height: 18px; background: var(--accent); border: 3px solid var(--bg);
+}
+.ktp-tl .dot.now { background: var(--accent-3); }
+.ktp-tl .yr {
+  position: absolute; top: 0; left: 0; right: 0; text-align: center;
+  font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--text-3); font-weight: 600;
+}
+.ktp-tl h4 { font-size: 15px; margin: 0 0 5px; font-weight: 600; }
+.ktp-tl p { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+
+/* ─── Slide 5: Before / After ─── */
+.before-after .panel { padding: 30px 34px; border: 1px solid var(--border); background: var(--surface); }
+.before-after .panel.before { border-left: 4px solid var(--bad); }
+.before-after .panel.after  { border-left: 4px solid var(--good); }
+.before-after .panel-label {
+  font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 18px;
+}
+.before-after .panel.before .panel-label { color: var(--bad); }
+.before-after .panel.after  .panel-label { color: var(--good); }
+.before-after ul { padding: 0; margin: 0; list-style: none; }
+.before-after li {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 10px 0; font-size: 15px; color: var(--text-1);
+  border-bottom: 1px solid var(--border); line-height: 1.5;
+}
+.before-after li:last-child { border-bottom: none; }
+.before-after li::before { flex-shrink: 0; font-size: 13px; margin-top: 2px; }
+.before-after .panel.before li::before { content: "✗"; color: var(--bad); }
+.before-after .panel.after  li::before { content: "✓"; color: var(--good); }
+
+/* ─── Slide 6: KTP triangle ─── */
+.ktp-nodes { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 28px; }
+.ktp-node { padding: 26px 28px; border: 1px solid var(--border); background: var(--surface); position: relative; }
+.ktp-node.highlight { border: 2px solid var(--accent); }
+.ktp-node .badge {
+  position: absolute; top: -1px; right: -1px;
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  padding: 4px 10px; background: var(--accent); color: #fff; font-weight: 700;
+}
+.ktp-node .n-icon { font-size: 32px; display: block; margin-bottom: 12px; line-height: 1; }
+.ktp-node h4 { font-size: 18px; font-weight: 700; margin: 0 0 10px; }
+.ktp-node p { font-size: 14px; color: var(--text-2); line-height: 1.6; margin: 0; }
+
+/* ─── Slide 7: Process steps ─── */
+.steps4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 32px; }
+.step { position: relative; padding: 26px 22px 22px; border: 1px solid var(--border); background: var(--surface); }
+.step .snum {
+  position: absolute; top: -16px; left: 18px;
+  width: 32px; height: 32px; background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 15px;
+}
+.step h4 { font-size: 16px; font-weight: 600; margin: 10px 0 8px; }
+.step p { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+.step .tag {
+  display: inline-block; margin-top: 12px; font-size: 11px;
+  padding: 3px 9px; background: var(--surface-2); color: var(--text-3); letter-spacing: .04em;
+}
+
+/* ─── Slide 8: KPI cards ─── */
+.kpi-card { border: 1px solid var(--border); background: var(--surface); padding: 24px 22px; }
+.kpi-card .eyebrow {
+  font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--text-3); margin: 0 0 10px;
+}
+.kpi-card .val { font-family: var(--font-serif); font-size: 48px; font-weight: 500; line-height: 1; color: var(--text-1); }
+.kpi-card .delta { font-size: 13px; margin-top: 6px; color: var(--good); }
+.kpi-card .delta.ph { color: var(--text-3); font-style: italic; }
+.project-desc {
+  padding: 18px 22px; border-left: 3px solid var(--accent);
+  background: var(--surface-2); margin-top: 20px;
+}
+.project-desc p { font-size: 15px; color: var(--text-1); line-height: 1.65; margin: 0; }
+
+/* ─── Slides 9 + 12: Bullet rows ─── */
+.blist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.blist li {
+  display: grid; grid-template-columns: 38px 1fr;
+  gap: 18px; align-items: start;
+  padding: 16px 20px; border: 1px solid var(--border); background: var(--surface);
+}
+.blist .bi { font-size: 18px; font-weight: 800; color: var(--accent); font-family: monospace; line-height: 1.5; }
+.blist b { display: block; font-size: 16px; margin-bottom: 3px; font-weight: 600; }
+.blist p { font-size: 13px; color: var(--text-2); line-height: 1.55; margin: 0; }
+
+/* ─── Slide 13: Reflection questions ─── */
+.qlist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.qlist li {
+  display: grid; grid-template-columns: 50px 1fr;
+  gap: 20px; align-items: start;
+  padding: 20px 24px; border: 1px solid var(--border); background: var(--surface);
+}
+.qlist .qn { font-family: var(--font-serif); font-size: 30px; font-weight: 500; color: var(--accent); line-height: 1; }
+.qlist .qt { font-size: 18px; line-height: 1.45; color: var(--text-1); margin: 0 0 5px; font-weight: 500; }
+.qlist .qs { font-size: 13px; color: var(--text-3); line-height: 1.5; }
+
+/* ─── Slide 14: CTA close ─── */
+.cta-close { max-width: 860px; margin: 0 auto; }
+.cta-tagline {
+  font-family: var(--font-serif); font-size: clamp(34px, 4.2vw, 58px);
+  line-height: 1.18; font-weight: 500; letter-spacing: -.01em; margin: 0 0 22px;
+}
+.contact-row { display: flex; gap: 16px; margin-top: 28px; flex-wrap: wrap; justify-content: center; }
+.contact-chip {
+  padding: 12px 22px; border: 1px solid var(--border-strong);
+  font-size: 15px; color: var(--text-1);
+  display: flex; align-items: center; gap: 8px;
+}
+.resource-row {
+  display: flex; gap: 32px; flex-wrap: wrap; justify-content: center;
+  margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border);
+}
+.resource .rl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); display: block; margin-bottom: 2px; }
+.resource .rv { font-size: 15px; color: var(--text-1); }
+</style>
+</head>
+<body class="ktp-lecture">
+<div class="deck">
+
+  <!-- ═══ 1. COVER ═══ -->
+  <section class="slide" data-title="Cover">
+    <p class="kicker">Career Skills in Business · Professional and Academic Development · Summer Provision</p>
+    <h1 class="h1">What Graduate Career<br>Opportunities Are There<br><span class="accent">in Innovation?</span></h1>
+    <p class="lede">A KTP Associate's Journey in Strategy, Operations and Professional Development</p>
+    <div class="speaker">
+      <div class="av"></div>
+      <div><b>Tao Wu</b><span>Perishable Supply Chain KTP Associate · University of Essex × Wealmoor</span></div>
+    </div>
+    <div class="logo-bar">
+      <img src="html-ppt-skill/assets/ppt/University_of_Essex_logo.png" alt="University of Essex">
+      <div class="logo-sep"></div>
+      <img src="html-ppt-skill/assets/ppt/KTP-logo.jpg" alt="Innovate UK · Knowledge Transfer Partnerships">
+      <div class="logo-sep"></div>
+      <img src="wealmoor-sop-app/assets/Wealmoor logo.png" alt="Wealmoor">
+    </div>
+    <div class="deck-footer">
+      <span>University of Essex · Strategy, Operations &amp; Entrepreneurship · 11.06.2026</span>
+      <span class="slide-number" data-current="1" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>Welcome everyone. My name is <strong>[Your Name]</strong> — I'm a KTP Associate at <strong>[Company]</strong>.</p>
+      <p>I want to start with something I genuinely wish someone had told me when I was sitting where you are. This session isn't "network more and polish your LinkedIn." I'm going to show you <strong>what actually works</strong> — because I've been on the other side of hiring decisions.</p>
+      <p>Let's go.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 2. THE STAT ═══ -->
+  <section class="slide" data-title="The Labour Market Reality">
+    <p class="kicker">The Graduate Labour Market · The Problem</p>
+    <h2 class="h2">Let's start with something that might make you confusing, frustrating and a little absurd.</h2>
+    <div class="big-stat mt-m">
+      <div class="num-wrap">
+        <span class="n counter" data-to="35">0</span><span class="pct">%</span>
+      </div>
+      <p class="subtitle">of "entry-level" jobs require 3+ years of experience.</p>
+      <p class="sub2">Job postings for junior roles have crept upward for years. And it keeps getting worse.</p>
+    </div>
+    <div class="deck-footer">
+      <span>Source: Intelligent.com Graduate Employment Survey</span>
+      <span class="slide-number" data-current="2" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>Let that number sit for a second. <strong>61%. Entry-level jobs. Three years of experience.</strong></p>
+      <p>Here's the question: isn't the whole point of entry-level that you're <em>new</em>? Where are you supposed to get this mystical "experience" if nobody gives you a shot without already having it?</p>
+      <p>This is a genuine structural problem in the graduate labour market. But here's the thing — <strong>the answer is more interesting than you think.</strong> Next slide.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 3. EXPERIENCE IS EVIDENCE ═══ -->
+  <section class="slide" data-title="Experience is Evidence" style="justify-content:flex-start;padding-top:60px;">
+    <p class="kicker">The Graduate Labour Market · Why Experience Is Asked For</p>
+    <h2 class="h2">Experience is evidence.<br><span style="font-size:.75em;color:var(--text-2);font-style:italic;font-weight:400;">It's not about the work. It's about the hand-holding.</span></h2>
+    <div style="flex:1;position:relative;min-height:0;margin-top:16px;"
+         data-fx="typewriter-4line"
+         data-fx-line1="›  How to prioritise without being told"
+         data-fx-line2="›  When to ask for help vs. figure it out"
+         data-fx-line3="›  Basic professional behaviour"
+         data-fx-line4="›  Know at least one or two industry-relevant tools"></div>
+    <div class="deck-footer">
+      <span></span>
+      <span class="slide-number" data-current="3" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>The 61% stat makes more sense now. <strong>It's not about years on a CV — it's that employers don't want to teach someone how to be in a workplace.</strong> That's what experience signals.</p>
+      <p>These four things are learnable. None of them require a specific job. You can build evidence for all of them while you're still at university — <em>if you're intentional about it.</em> That's what the rest of this session is about.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 4. ABOUT ME ═══ -->
+  <section class="slide" data-title="About Me">
+    <p class="kicker">About Me · Tao Wu</p>
+    <h2 class="h2">From Graduate Roles<br>to Real Business Innovation</h2>
+    <div class="ktp-tl">
+      <div class="row anim-stagger-list" data-anim-target style="grid-template-columns:repeat(4,1fr);">
+        <div class="item">
+          <div class="yr">2019–2021</div>
+          <div class="dot"></div>
+          <h4>Trip.com Group Ltd</h4>
+          <p>Management Trainee → Process Operations Supervisor</p>
+        </div>
+        <div class="item">
+          <div class="yr">2021–2022</div>
+          <div class="dot"></div>
+          <h4>Cranfield University</h4>
+          <p>MSc Logistics &amp; Supply Chain Management</p>
+        </div>
+        <div class="item">
+          <div class="yr">2022–2024</div>
+          <div class="dot"></div>
+          <h4>Port of Dover</h4>
+          <p>Graduate Development Trainee</p>
+        </div>
+        <div class="item">
+          <div class="yr">2025–Now</div>
+          <div class="dot now"></div>
+          <h4>UoE × Wealmoor</h4>
+          <p>Perishable Supply Chain KTP Associate</p>
+        </div>
+      </div>
+    </div>
+    <div class="deck-footer">
+      <span></span>
+      <span class="slide-number" data-current="4" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>Tell the story honestly. If there were setbacks or uncertain periods — say so. <strong>Students respond to authenticity, not a polished CV recitation.</strong></p>
+      <p>Key moment to land: when I found out KTP existed, it felt like a cheat code — because it was exactly the structured pathway I'd been looking for without knowing it existed. That's the bridge to the next slide.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 6. WHAT IS KTP? ═══ -->
+  <section class="slide" data-title="What is KTP?">
+    <p class="kicker">Knowledge Transfer Partnership · Innovate UK</p>
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;margin-top:8px;">
+      <!-- Left: title + 3 facts -->
+      <div>
+        <h2 class="h2" style="margin-bottom:24px;">What is KTP?</h2>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="padding:16px 20px;border:1px solid var(--border);background:var(--surface);">
+            <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 5px;font-weight:600;">Programme</p>
+            <p style="font-size:14px;color:var(--text-1);line-height:1.55;margin:0;">A unique programme helping organisations access the best UK academic knowledge, expertise and technology.</p>
+          </div>
+          <div style="padding:16px 20px;border:1px solid var(--border);background:var(--surface);">
+            <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 5px;font-weight:600;">Partnership</p>
+            <p style="font-size:14px;color:var(--text-1);line-height:1.55;margin:0;">A three-way partnership between a UK business, a UK Knowledge Base, and a suitably qualified graduate to lead a strategic project.</p>
+          </div>
+          <div style="padding:16px 20px;border:1px solid var(--border);background:var(--surface);">
+            <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin:0 0 5px;font-weight:600;">Funding</p>
+            <p style="font-size:14px;color:var(--text-1);line-height:1.55;margin:0;">12–36 month Innovate UK funded project. Funding rates vary from 50%–67% depending on the company partner.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Right: diagram -->
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <img src="html-ppt-skill/assets/ppt/KTP-Triad.png"
+             alt="KTP Three-Way Partnership"
+             data-anim="fade-up"
+             style="max-width:100%;max-height:460px;object-fit:contain;mix-blend-mode:multiply;">
+      </div>
+    </div>
+    <div class="deck-footer">
+      <span>ktponline.org.uk</span>
+      <span class="slide-number" data-current="5" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>KTP is a UK government scheme funded by Innovate UK — it's been running since the 1970s with thousands of active partnerships at any time.</p>
+      <p>The key thing: <strong>it is not an internship.</strong> You're employed with a salary. You have an academic supervisor. You're delivering a project that genuinely matters to the business. The Associate is the bridge — that's the entire value proposition of the scheme.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 7. LIFE AS AN ASSOCIATE ═══ -->
+  <section class="slide" data-title="Life as an Associate">
+    <p class="kicker">Knowledge Transfer Partnership · The Role</p>
+    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;margin-top:8px;">
+      <!-- Left: title + 3 bullet points -->
+      <div>
+        <h2 class="h2" style="margin-bottom:28px;">Being a<br>'KTP Associate'</h2>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:16px 20px;border:1px solid var(--border);background:var(--surface);">
+            <span style="color:var(--accent);font-weight:700;font-size:18px;flex-shrink:0;line-height:1.4;">01</span>
+            <p style="font-size:14px;color:var(--text-1);line-height:1.6;margin:0;">Associates are based in the company, with access to university resources.</p>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:16px 20px;border:1px solid var(--border);background:var(--surface);">
+            <span style="color:var(--accent);font-weight:700;font-size:18px;flex-shrink:0;line-height:1.4;">02</span>
+            <p style="font-size:14px;color:var(--text-1);line-height:1.6;margin:0;">The academic team provide weekly supervision and attend monthly meetings to engage with company partners.</p>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:16px 20px;border:1px solid var(--border);background:var(--surface);">
+            <span style="color:var(--accent);font-weight:700;font-size:18px;flex-shrink:0;line-height:1.4;">03</span>
+            <p style="font-size:14px;color:var(--text-1);line-height:1.6;margin:0;">The Knowledge Transfer Advisor from Innovate UK stays engaged throughout the project as a coach and mentor.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Right: YouTube video -->
+      <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--border);">
+        <iframe
+          src="https://www.youtube.com/embed/lK0eb-wblYU"
+          title="KTP Associate"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="position:absolute;top:0;left:0;width:100%;height:100%;">
+        </iframe>
+      </div>
+    </div>
+    <div class="deck-footer">
+      <span></span>
+      <span class="slide-number" data-current="6" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>You're employed by the company but supervised by the university. You get the best of both worlds — real commercial pressure and academic rigour. The KTA from Innovate UK is essentially your project coach throughout.</p>
+      <p>This video gives a good overview — worth watching in full if you want to know more.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 7B. BENEFITS OF KTP ASSOCIATE ═══ -->
+  <section class="slide" data-title="Benefits of a KTP Associate" style="justify-content:flex-start;padding-top:56px;">
+    <p class="kicker">KTP Associate · Why It's Worth It</p>
+    <h2 class="h2" style="margin-bottom:26px;">Benefits of being a KTP Associate.</h2>
+    <div class="g3" style="gap:20px;">
+      <div class="card top-accent">
+        <span class="icon">💷</span>
+        <h4>Employed &amp; salaried</h4>
+        <p class="dim">Associates earn a strong salary (typically £30,000–£50,000 per year), along with benefits like pension schemes depending on the host institution.</p>
+      </div>
+      <div class="card top-accent">
+        <span class="icon">⏱️</span>
+        <h4>10% time for personal development</h4>
+        <p class="dim">A substantial development budget each year for courses, conferences and qualifications — plus built-in time for your own learning, not squeezed in around the day job.</p>
+      </div>
+      <div class="card top-accent">
+        <span class="icon">🎯</span>
+        <h4>Lead a real project</h4>
+        <p class="dim">Own a strategic project end-to-end. Genuine responsibility and visibility from the start.</p>
+      </div>
+      <div class="card top-accent">
+        <span class="icon">🧑‍🏫</span>
+        <h4>Dual mentorship</h4>
+        <p class="dim">Academic supervisors and company directors both invested in your growth and success.</p>
+      </div>
+      <div class="card top-accent">
+        <span class="icon">🚀</span>
+        <h4>Strong career outcomes</h4>
+        <p class="dim">Most associates are offered a permanent role by the company — a proven route into industry.</p>
+      </div>
+      <div class="card top-accent">
+        <span class="icon">🛂</span>
+        <h4>Visa-friendly for international talent</h4>
+        <p class="dim">Associates typically enter the UK via the <strong>Global Talent Visa</strong> (Endorsed Funder route), and can also use the standard <strong>Skilled Worker</strong> visa.</p>
+      </div>
+    </div>
+    <div class="deck-footer">
+      <span></span>
+      <span class="slide-number" data-current="7" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>Lay out why this is genuinely a great deal. <strong>It's not an internship — you're employed, paid, and given real money to develop yourself.</strong> The 10% development time is rare in any graduate job.</p>
+      <p>Land the last card hard: <em>most associates get offered a permanent job by the company.</em> It's effectively a 2-year extended interview where you're paid and trained the whole time.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 8. MY PROJECT ═══ -->
+  <section class="slide" data-title="My Project">
+    <p class="kicker">My KTP · Perishable Supply Chain</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-top:10px;">
+      <!-- Left: title + focus areas -->
+      <div>
+        <h2 class="h2" style="margin-bottom:24px;">To develop and deploy novel approaches to<br><span class="accent">global food supply chain management.</span></h2>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="padding:20px 24px;border:1px solid var(--border);background:var(--surface);border-left:4px solid var(--accent);">
+            <p style="font-size:15px;font-weight:600;color:var(--text-1);line-height:1.5;margin:0;">Transition key perishable product supply chain from <span class="accent">air to sea freight</span></p>
+          </div>
+          <div style="padding:20px 24px;border:1px solid var(--border);background:var(--surface);border-left:4px solid var(--accent-3);">
+            <p style="font-size:15px;font-weight:600;color:var(--text-1);line-height:1.5;margin:0;">Enhance resilience to freight volatility, reduce <span class="accent">GHG emissions</span> and improve shelf life</p>
+          </div>
+          <!-- country chips -->
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+            <span style="font-size:12px;padding:4px 12px;border:1px solid var(--border);color:var(--text-2);background:var(--surface-2);">🇪🇬 Egypt</span>
+            <span style="font-size:12px;padding:4px 12px;border:1px solid var(--border);color:var(--text-2);background:var(--surface-2);">🇰🇪 Kenya</span>
+            <span style="font-size:12px;padding:4px 12px;border:1px solid var(--border);color:var(--text-2);background:var(--surface-2);">🇮🇳 India</span>
+            <span style="font-size:12px;padding:4px 12px;border:1px solid var(--border);color:var(--text-2);background:var(--surface-2);">🇬🇲 Gambia</span>
+          </div>
+        </div>
+      </div>
+      <!-- Right: 3D globe -->
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <canvas id="ktp-globe"
+          style="width:100%;max-width:400px;aspect-ratio:1/1;opacity:0;transition:opacity 1.2s ease;border-radius:50%;display:block;touch-action:none;cursor:grab;">
+        </canvas>
+      </div>
+    </div>
+    <div class="deck-footer">
+      <span>Supply chain origin countries</span>
+      <span class="slide-number" data-current="8" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>These five countries are where Wealmoor sources key perishable products. The goal is transitioning from air freight (fast, expensive, high carbon) to sea freight — <strong>better for cost, resilience, and emissions.</strong></p>
+      <p>The globe is interactive — can drag to rotate if presenting from a laptop.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 9. ACHIEVEMENTS ═══ -->
+  <section class="slide" data-title="Achievements">
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;margin-top:10px;">
+
+      <!-- LEFT: three stat blocks stacked -->
+      <div style="display:flex;flex-direction:column;gap:0;">
+
+        <p class="kicker" style="margin-bottom:6px;">My KTP · 2024–2025 Results</p>
+
+        <!-- 1. Sea freight -->
+        <div style="padding:18px 0;border-bottom:1px solid var(--border);">
+          <p style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);margin:0 0 10px;font-weight:600;">Sea Freight Volume · Egypt Green Bean</p>
+          <div style="display:flex;align-items:baseline;gap:10px;">
+            <span style="font-family:var(--font-serif);font-size:44px;font-weight:500;line-height:1;color:var(--text-2);">9%</span>
+            <span style="font-size:18px;color:#1a6fa8;">→</span>
+            <span style="font-family:var(--font-serif);font-size:52px;font-weight:500;line-height:1;color:#1a6fa8;">69%</span>
+            <span style="font-size:13px;color:var(--text-3);align-self:flex-end;padding-bottom:6px;">sea freight · 37t → 166t</span>
+          </div>
+        </div>
+
+        <!-- 2. CO2e -->
+        <div style="padding:18px 0;border-bottom:1px solid var(--border);">
+          <p style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);margin:0 0 10px;font-weight:600;">Transport CO₂e Reduction</p>
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span style="font-family:var(--font-serif);font-size:52px;font-weight:500;line-height:1;color:var(--good);">48%</span>
+            <span style="font-size:13px;color:var(--text-3);align-self:flex-end;padding-bottom:6px;">CO₂e saving per tonne · air to sea mode shift</span>
+          </div>
+        </div>
+
+        <!-- 3. Waste -->
+        <div style="padding:18px 0;border-bottom:1px solid var(--border);">
+          <p style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);margin:0 0 10px;font-weight:600;">Qualifying Waste · Egypt Green Bean</p>
+          <div style="display:flex;align-items:baseline;gap:10px;">
+            <span style="font-family:var(--font-serif);font-size:44px;font-weight:500;line-height:1;color:var(--text-2);">19%</span>
+            <span style="font-size:18px;color:var(--warn);">→</span>
+            <span style="font-family:var(--font-serif);font-size:52px;font-weight:500;line-height:1;color:var(--warn);">9.7%</span>
+          </div>
+        </div>
+
+        <!-- 4. Kenya Broccoli -->
+        <div style="padding:18px 0;">
+          <p style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);margin:0 0 10px;font-weight:600;">Kenya Tenderstem Broccoli</p>
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
+            <span style="font-family:var(--font-serif);font-size:44px;font-weight:500;line-height:1;color:var(--text-2);">14</span>
+            <span style="font-size:18px;color:var(--good);">→</span>
+            <span style="font-family:var(--font-serif);font-size:52px;font-weight:500;line-height:1;color:var(--good);">35</span>
+            <span style="font-size:13px;color:var(--text-3);align-self:flex-end;padding-bottom:6px;">days shelf life</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:10px;">
+            <span style="font-family:var(--font-serif);font-size:32px;font-weight:500;line-height:1;color:var(--text-2);">24%</span>
+            <span style="font-size:16px;color:var(--good);">→</span>
+            <span style="font-family:var(--font-serif);font-size:36px;font-weight:500;line-height:1;color:var(--good);">&lt;1%</span>
+            <span style="font-size:13px;color:var(--text-3);align-self:flex-end;padding-bottom:4px;">weight loss</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: two images stacked, equal width -->
+      <div style="display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center;">
+        <img src="html-ppt-skill/assets/ppt/container situation.gif"
+             alt="Container situation"
+             style="width:78%;height:auto;display:block;mix-blend-mode:multiply;">
+        <img src="html-ppt-skill/assets/ppt/broccoli.png"
+             alt="Kenya Tenderstem Broccoli"
+             style="width:78%;height:auto;display:block;mix-blend-mode:multiply;">
+      </div>
+    </div>
+
+    <div class="deck-footer">
+      <span>University of Essex × Wealmoor · 2025</span>
+      <span class="slide-number" data-current="9" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>These are <strong>real numbers from a live commercial project.</strong> Egypt green bean: 9% → 69% sea freight in one year, 48% CO₂e saving per tonne, waste down from 19% to 9.7%.</p>
+      <p>The GIF shows the container situation we're working within — real operational context for the mode shift.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 10. FOCUS AREA ═══ -->
+  <section class="slide" data-title="Project Focus Areas">
+    <p class="kicker" style="position:absolute;top:36px;left:96px;z-index:2;">My KTP · Project Review Areas</p>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:60px 48px 48px;">
+      <img src="html-ppt-skill/assets/ppt/focus area.png"
+           alt="Project review areas for shelf life extension from farm to fork via sea freight"
+           data-anim="fade-up"
+           style="max-width:100%;max-height:100%;object-fit:contain;">
+    </div>
+    <div class="deck-footer">
+      <span></span>
+      <span class="slide-number" data-current="10" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>Walk through the four pillars: <strong>Agronomical Best Practice → Post-Harvest Handling → Packaging → Logistics Solution.</strong> This is the full farm-to-fork chain we're working across.</p>
+      <p>Key points: controlled atmosphere, proper airflow in containers, packaging for shelf life extension. Each pillar connects directly to the air-to-sea freight transition goal.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 11. WHAT EMPLOYERS WANT ═══ -->
+  <section class="slide" data-title="What Employers Actually Want" style="justify-content:flex-start;padding-top:54px;">
+    <p class="kicker">Employability · From Skill Names to Evidence</p>
+    <h2 class="h2" style="margin-bottom:24px;">What employers actually look for.</h2>
+
+    <!-- Three columns -->
+    <div style="display:grid;grid-template-columns:0.9fr 1fr 1.35fr;gap:0;border:1px solid var(--border);">
+
+      <!-- COLUMN 1: Employers want -->
+      <div style="border-right:1px solid var(--border);">
+        <div style="padding:14px 20px;border-bottom:2px solid var(--border-strong);">
+          <p style="font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--text-1);margin:0;">Employers want…</p>
+        </div>
+        <div style="font-size:15px;color:var(--text-1);line-height:1.4;">
+          <p style="margin:0;padding:21px 20px;border-bottom:1px solid var(--border);font-weight:600;">Problem solving</p>
+          <p style="margin:0;padding:21px 20px;border-bottom:1px solid var(--border);font-weight:600;">Teamwork</p>
+          <p style="margin:0;padding:21px 20px;border-bottom:1px solid var(--border);font-weight:600;">Communication</p>
+          <p style="margin:0;padding:21px 20px;border-bottom:1px solid var(--border);font-weight:600;">Data &amp; digital skills</p>
+          <p style="margin:0;padding:21px 20px;font-weight:600;">Business awareness</p>
+        </div>
+      </div>
+
+      <!-- COLUMN 2: Weak applications say -->
+      <div style="border-right:1px solid var(--border);">
+        <div style="padding:14px 20px;border-bottom:2px solid var(--border-strong);">
+          <p style="font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--text-3);margin:0;">Weak applications say…</p>
+        </div>
+        <div style="font-size:14px;color:var(--text-3);font-style:italic;line-height:1.4;">
+          <p style="margin:0;padding:21px 20px;border-bottom:1px solid var(--border);">"I am a problem solver."</p>
+          <p style="margin:0;padding:21px 20px;border-bottom:1px solid var(--border);">"I work well in a team."</p>
+          <p style="margin:0;padding:21px 20px;border-bottom:1px solid var(--border);">"I have strong communication skills."</p>
+          <p style="margin:0;padding:21px 20px;border-bottom:1px solid var(--border);">"I am analytical."</p>
+          <p style="margin:0;padding:21px 20px;">"I understand business."</p>
+        </div>
+      </div>
+
+      <!-- COLUMN 3: Strong applications prove (highlighted, STAR + data) -->
+      <div style="background:var(--surface);box-shadow:inset 0 0 0 2px var(--accent);">
+        <div style="padding:14px 22px;background:var(--accent);">
+          <p style="font-size:13px;font-weight:700;letter-spacing:.06em;color:#fff;margin:0;">Strong applications prove…<span style="font-weight:400;font-size:11px;opacity:.85;"> &nbsp;(action → result)</span></p>
+        </div>
+        <div style="font-size:13.5px;color:var(--text-1);line-height:1.45;">
+          <p style="margin:0;padding:21px 22px;border-bottom:1px solid var(--border);">Built a container-loading tool &amp; ran trials → <strong>waste 19% → 9.7%</strong></p>
+          <p style="margin:0;padding:21px 22px;border-bottom:1px solid var(--border);">Coordinated growers, shipping lines &amp; retail → <strong>sea freight 9% → 69%</strong></p>
+          <p style="margin:0;padding:21px 22px;border-bottom:1px solid var(--border);">Pitched trial results to executives → <strong>won sign-off to scale</strong></p>
+          <p style="margin:0;padding:21px 22px;border-bottom:1px solid var(--border);">Built Power BI dashboards on the ERP → <strong>used daily by the floor team</strong></p>
+          <p style="margin:0;padding:21px 22px;">Tied changes to cost, quality &amp; risk → <strong>48% CO₂e saving / tonne</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom takeaway -->
+    <p style="font-family:var(--font-serif);font-size:20px;font-style:italic;color:var(--text-1);text-align:center;margin:auto auto 28px;max-width:880px;line-height:1.4;">
+      The best career evidence is not a skill name — it is a <span class="accent">story of action, context and impact.</span>
+    </p>
+
+    <div class="deck-footer">
+      <span></span>
+      <span class="slide-number" data-current="11" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>This is the key slide. <strong>Column one is every skill in a job advert. Column two is what almost every applicant writes — and it's worthless</strong> because everyone says it.</p>
+      <p>Column three is the difference. Same skills, but <em>proven with a specific story.</em> That's what gets you the interview. Action, context, impact — every single time.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 13. WORK EXPERIENCE & HOW TO APPLY ═══ -->
+  <section class="slide" data-title="Value of Work Experience" style="justify-content:flex-start;padding-top:52px;">
+    <p class="kicker">The Value of Work Experience · How to Apply</p>
+    <h2 class="h2" style="margin-bottom:8px;">Experience is the evidence — here's how to apply it.</h2>
+    <p class="lede" style="font-size:15px;margin-bottom:22px;">It gives you four things: <strong style="color:var(--text-1);">proof on your CV · a network · clarity on what you want · classroom knowledge made real.</strong></p>
+
+    <div class="g3" style="gap:18px;">
+      <div class="card top-accent">
+        <span class="icon" style="font-size:28px;">📅</span>
+        <h4>Start early — know the calendar</h4>
+        <p class="dim">Spring weeks, insight days &amp; grad schemes open <strong>Oct–Dec, a year ahead.</strong></p>
+      </div>
+      <div class="card top-accent">
+        <span class="icon" style="font-size:28px;">🧾</span>
+        <h4>Treat every experience as evidence</h4>
+        <p class="dim">Even a two-month internship belongs on your CV. Quantify it: <strong>"Managed 3 social accounts"</strong> beats "assisted with social media." Say what you did, used &amp; delivered.</p>
+      </div>
+      <div class="card top-accent">
+        <span class="icon" style="font-size:28px;">🛠️</span>
+        <h4>Build one in-demand skill first</h4>
+        <p class="dim">Pick one in-demand skill — <strong>Python, Power BI, Figma, Excel dashboards, and more.</strong> Finish a free/low-cost course, add the certificate. It signals initiative and bridges the gap.</p>
+      </div>
+      <div class="card top-accent">
+        <span class="icon" style="font-size:28px;">🎯</span>
+        <h4>Tailor every application — stop mass-applying</h4>
+        <p class="dim">Read the job description; <strong>mirror its language.</strong> Lead with impact, not duties. Ten targeted applications beat a hundred generic ones.</p>
+      </div>
+      <div class="card top-accent">
+        <span class="icon" style="font-size:28px;">🤖</span>
+        <h4>Use AI to break knowledge barriers</h4>
+        <p class="dim">You no longer need a background to enter a field. AI turns <strong>"I'm not qualified"</strong> into <strong>"I can learn this"</strong> — closing knowledge gaps fast and opening doors that used to be closed.</p>
+      </div>
+      <div class="card top-accent">
+        <span class="icon" style="font-size:28px;">🏛️</span>
+        <h4>Use your support network</h4>
+        <p class="dim">The <strong>Essex Careers Service</strong> reviews CVs &amp; runs mock interviews. Watch KTP openings at <a href="https://iuk-ktp.org.uk/" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;text-decoration:underline;">iuk-ktp.org.uk</a> for paid, project-led graduate roles.</p>
+      </div>
+    </div>
+
+    <div class="deck-footer">
+      <span>essex.ac.uk/student/careers &nbsp;·&nbsp; iuk-ktp.org.uk &nbsp;·&nbsp; prospects.ac.uk</span>
+      <span class="slide-number" data-current="12" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>This is the practical payoff slide. <strong>Start with the value</strong> — experience is proof, network, clarity, and knowledge made real. Then the six moves.</p>
+      <p>On the AI point, tell my story: <em>I joined this project with zero agronomy knowledge — AI let me close that gap fast. It turned "I'm not qualified" into "I can learn this."</em> That's the real power for you as business students.</p>
+      <p>Hammer two things: <em>start early</em> (most miss deadlines because they apply too late) and <em>stop mass-applying</em> (tailored beats spray-and-pray). Point them to the Essex Careers Service — most students never use it.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 13. REFLECTION ═══ -->
+  <section class="slide" data-title="Reflection">
+    <p class="kicker">Reflection · Before You Leave Today</p>
+    <h2 class="h2">Three questions to sit with.</h2>
+    <ul class="qlist mt-l">
+      <li>
+        <span class="qn">1</span>
+        <div>
+          <p class="qt">What have you already done that you haven't turned into evidence?</p>
+          <p class="qs">Every job, society, module or project holds an <strong>action → result</strong> story. Experience isn't the gap — telling it is. What's the one you've never put into words?</p>
+        </div>
+      </li>
+      <li>
+        <span class="qn">2</span>
+        <div>
+          <p class="qt">What's one move you'll make this term — not next year?</p>
+          <p class="qs">One application, one skill to start, one chat with the Careers Service. Deadlines open earlier than you think. Small action now beats a perfect plan later.</p>
+        </div>
+      </li>
+      <li>
+        <span class="qn">3</span>
+        <div>
+          <p class="qt">What problem do you actually want to solve — and what could you learn to get there?</p>
+          <p class="qs">You don't need the background yet. Pick the problem you care about; with AI, the knowledge gap is now closeable.</p>
+        </div>
+      </li>
+    </ul>
+    <div class="deck-footer">
+      <span></span>
+      <span class="slide-number" data-current="13" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>You can ask them to write these down — it makes it more concrete. <strong>These three questions map directly to the three module learning outcomes</strong>: self-awareness, identifying opportunities, professional reflection.</p>
+      <p>Good moment to open for Q&amp;A if you have time. Let them drive it.</p>
+    </aside>
+  </section>
+
+  <!-- ═══ 14. CLOSE / CTA ═══ -->
+  <section class="slide center tc" data-title="Thank You" data-fx="confetti-cannon">
+    <div class="cta-close">
+      <p class="kicker">Thank You · Q&amp;A</p>
+      <h1 class="cta-tagline">
+        The barrier was never experience.<br>
+        So go and pursue<br>
+        <span class="accent">what genuinely excites you.</span>
+      </h1>
+      <p class="lede mt-m" style="font-size:17px;max-width:700px;margin:18px auto 0;">Package what you have, close the gaps with curiosity, and back yourself to chase what you actually care about. The experience will follow.</p>
+      <div class="contact-row">
+        <div class="contact-chip">✉ tw24091@essex.ac.uk</div>
+        <div class="contact-chip">🔗 linkedin.com/in/tao-wu09</div>
+      </div>
+    </div>
+    <div class="deck-footer">
+      <span>Press S for presenter view · ← → to navigate · F for fullscreen</span>
+      <span class="slide-number" data-current="14" data-total="14"></span>
+    </div>
+    <aside class="notes">
+      <p>Land the close. <strong>Come back to the core message</strong>: it's not about having the most experience. It's about packaging what you have, building evidence wherever you are, and finding structures like KTP that let you do both at once.</p>
+      <p>Leave your contact details up. Students who want to follow up, ask about KTP, or get advice on their applications — you want them to have a way to reach you. That's part of why you're here.</p>
+    </aside>
+  </section>
+
+</div>
+
+
+<script src="html-ppt-skill/assets/runtime.js"></script>
+<script type="module">
+/* ── KTP Globe (slide 8) ── */
+import createGlobe from './html-ppt-skill/assets/ppt/cobe.mjs';
+
+const MARKERS = [
+  { location: [26.82,  30.80], size: 0.06 }, // Egypt
+  { location: [-0.02,  37.91], size: 0.06 }, // Kenya
+  { location: [20.59,  78.96], size: 0.06 }, // India
+  { location: [13.44, -15.31], size: 0.06 }, // Gambia
+];
+
+let globe = null, phi = 0;
+let pointerDown = false, lastX = 0, phiOffset = 0, dragDelta = 0;
+
+function initGlobe() {
+  const canvas = document.getElementById('ktp-globe');
+  if (!canvas || globe) return;
+  const width = canvas.offsetWidth;
+  if (!width) { setTimeout(initGlobe, 80); return; }
+  globe = createGlobe(canvas, {
+    devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+    width, height: width,
+    phi: 0, theta: 0.3,
+    dark: 0, diffuse: 1.4,
+    mapSamples: 20000, mapBrightness: 9,
+    baseColor:   [0.98, 0.97, 0.96],
+    markerColor: [0.85, 0.23, 0.16],
+    glowColor:   [0.97, 0.96, 0.94],
+    markers: MARKERS,
+    onRender(state) {
+      if (!pointerDown) phi += 0.004;
+      state.phi = phi + phiOffset + dragDelta;
+    },
+  });
+  setTimeout(() => { canvas.style.opacity = '1'; }, 400);
+  canvas.addEventListener('pointerdown', e => { pointerDown = true; lastX = e.clientX; canvas.setPointerCapture(e.pointerId); canvas.style.cursor = 'grabbing'; });
+  canvas.addEventListener('pointermove', e => { if (pointerDown) { dragDelta += (e.clientX - lastX) / 200; lastX = e.clientX; } });
+  canvas.addEventListener('pointerup', () => { phiOffset += dragDelta; dragDelta = 0; pointerDown = false; canvas.style.cursor = 'grab'; });
+}
+
+function destroyGlobe() {
+  if (globe) { globe.destroy(); globe = null; }
+  phi = 0; phiOffset = 0; dragDelta = 0;
+  const c = document.getElementById('ktp-globe');
+  if (c) c.style.opacity = '0';
+}
+
+function setup() {
+  const deck = document.querySelector('.deck');
+  if (!deck) return;
+  deck.querySelectorAll('.slide').forEach(sl => {
+    if (sl.dataset.title !== 'My Project') return;
+    new MutationObserver(() => {
+      sl.classList.contains('is-active') ? setTimeout(initGlobe, 100) : destroyGlobe();
+    }).observe(sl, { attributes: true, attributeFilter: ['class'] });
+    if (sl.classList.contains('is-active')) setTimeout(initGlobe, 100);
+  });
+}
+
+document.readyState === 'loading'
+  ? document.addEventListener('DOMContentLoaded', setup)
+  : setup();
+</script>
+<script>
+/* Custom 4-line typewriter FX */
+window.HPX = window.HPX || {};
+window.HPX['typewriter-4line'] = function(el) {
+  if (getComputedStyle(el).position === 'static') el.style.position = 'relative';
+  const lines = [
+    el.getAttribute('data-fx-line1') || '> line 1',
+    el.getAttribute('data-fx-line2') || '> line 2',
+    el.getAttribute('data-fx-line3') || '> line 3',
+    el.getAttribute('data-fx-line4') || '> line 4',
+  ];
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:28px 0;font:700 26px/1.3 ui-monospace,Menlo,"SF Mono",monospace;color:#1a1a18;';
+  el.appendChild(wrap);
+  const rows = lines.map(txt => {
+    const row = document.createElement('div');
+    row.style.cssText = 'white-space:pre;display:flex;align-items:center;';
+    const span = document.createElement('span');
+    const cur = document.createElement('span');
+    cur.textContent = '█';
+    cur.style.cssText = 'display:inline-block;margin-left:2px;color:#d93a2a;animation:hpxBlink 1s steps(2) infinite;';
+    row.appendChild(span); row.appendChild(cur);
+    wrap.appendChild(row);
+    return { span, txt, i: 0 };
+  });
+  if (!document.getElementById('hpx-blink-kf')) {
+    const st = document.createElement('style');
+    st.id = 'hpx-blink-kf';
+    st.textContent = '@keyframes hpxBlink{50%{opacity:0}}';
+    document.head.appendChild(st);
+  }
+  let stopped = false;
+  const speeds = [48, 62, 42, 54];
+  rows.forEach((r, idx) => {
+    const tick = () => {
+      if (stopped) return;
+      if (r.i < r.txt.length) { r.span.textContent += r.txt[r.i++]; setTimeout(tick, speeds[idx]); }
+      else setTimeout(() => { if (!stopped) { r.i = 0; r.span.textContent = ''; tick(); } }, 2400);
+    };
+    setTimeout(tick, idx * 500);
+  });
+  return { stop() { stopped = true; if (wrap.parentNode) wrap.parentNode.removeChild(wrap); } };
+};
+</script>
+<script src="html-ppt-skill/assets/animations/fx-runtime.js"></script>
+</body>
+</html>
