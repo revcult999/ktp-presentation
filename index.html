@@ -262,8 +262,8 @@
       <div class="num-wrap">
         <span class="n counter" data-to="35">0</span><span class="pct">%</span>
       </div>
-      <p class="subtitle">of "entry-level" jobs require 3+ years of experience.</p>
-      <p class="sub2">Job postings for junior roles have crept upward for years. And it keeps getting worse.</p>
+      <p class="subtitle" data-anim="fade-up">of "entry-level" jobs require 3+ years of experience.</p>
+      <p class="sub2" data-anim="fade-up">Job postings for junior roles have crept upward for years. And it keeps getting worse.</p>
     </div>
     <div class="deck-footer">
       <span>Source: Intelligent.com Graduate Employment Survey</span>
@@ -426,7 +426,7 @@
   <section class="slide" data-title="Benefits of a KTP Associate" style="justify-content:flex-start;padding-top:56px;">
     <p class="kicker">KTP Associate · Why It's Worth It</p>
     <h2 class="h2" style="margin-bottom:26px;">Benefits of being a KTP Associate.</h2>
-    <div class="g3" style="gap:20px;">
+    <div class="g3 anim-stagger-list" data-anim-target style="gap:20px;">
       <div class="card top-accent">
         <span class="icon">💷</span>
         <h4>Employed &amp; salaried</h4>
@@ -513,7 +513,7 @@
     <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;margin-top:10px;">
 
       <!-- LEFT: three stat blocks stacked -->
-      <div style="display:flex;flex-direction:column;gap:0;">
+      <div class="anim-stagger-list" data-anim-target style="display:flex;flex-direction:column;gap:0;">
 
         <p class="kicker" style="margin-bottom:6px;">My KTP · 2024–2025 Results</p>
 
@@ -611,7 +611,7 @@
     <h2 class="h2" style="margin-bottom:24px;">What employers actually look for.</h2>
 
     <!-- Three columns -->
-    <div style="display:grid;grid-template-columns:0.9fr 1fr 1.35fr;gap:0;border:1px solid var(--border);">
+    <div data-anim="fade-up" style="display:grid;grid-template-columns:0.9fr 1fr 1.35fr;gap:0;border:1px solid var(--border);">
 
       <!-- COLUMN 1: Employers want -->
       <div style="border-right:1px solid var(--border);">
@@ -657,7 +657,7 @@
     </div>
 
     <!-- Bottom takeaway -->
-    <p style="font-family:var(--font-serif);font-size:20px;font-style:italic;color:var(--text-1);text-align:center;margin:auto auto 28px;max-width:880px;line-height:1.4;">
+    <p data-anim="fade-up" style="font-family:var(--font-serif);font-size:20px;font-style:italic;color:var(--text-1);text-align:center;margin:auto auto 28px;max-width:880px;line-height:1.4;">
       The best career evidence is not a skill name — it is a <span class="accent">story of action, context and impact.</span>
     </p>
 
@@ -677,7 +677,7 @@
     <h2 class="h2" style="margin-bottom:8px;">Experience is the evidence — here's how to apply it.</h2>
     <p class="lede" style="font-size:15px;margin-bottom:22px;">It gives you four things: <strong style="color:var(--text-1);">proof on your CV · a network · clarity on what you want · classroom knowledge made real.</strong></p>
 
-    <div class="g3" style="gap:18px;">
+    <div class="g3 anim-stagger-list" data-anim-target style="gap:18px;">
       <div class="card top-accent">
         <span class="icon" style="font-size:28px;">📅</span>
         <h4>Start early — know the calendar</h4>
@@ -725,7 +725,7 @@
   <section class="slide" data-title="Reflection">
     <p class="kicker">Reflection · Before You Leave Today</p>
     <h2 class="h2">Three questions to sit with.</h2>
-    <ul class="qlist mt-l">
+    <ul class="qlist mt-l anim-stagger-list" data-anim-target>
       <li>
         <span class="qn">1</span>
         <div>
@@ -762,7 +762,7 @@
   <section class="slide center tc" data-title="Thank You" data-fx="confetti-cannon">
     <div class="cta-close">
       <p class="kicker">Thank You · Q&amp;A</p>
-      <h1 class="cta-tagline">
+      <h1 class="cta-tagline" data-anim="rise-in">
         The barrier was never experience.<br>
         So go and pursue<br>
         <span class="accent">what genuinely excites you.</span>
@@ -771,6 +771,11 @@
       <div class="contact-row">
         <div class="contact-chip">✉ tw24091@essex.ac.uk</div>
         <div class="contact-chip">🔗 linkedin.com/in/tao-wu09</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:24px;">
+        <img src="html-ppt-skill/assets/ppt/ktp-qr.png" alt="Scan for these slides"
+             style="width:132px;height:132px;display:block;">
+        <p style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin:0;">Scan for these slides</p>
       </div>
     </div>
     <div class="deck-footer">
@@ -895,5 +900,29 @@ window.HPX['typewriter-4line'] = function(el) {
 };
 </script>
 <script src="html-ppt-skill/assets/animations/fx-runtime.js"></script>
+<script>
+/* Replay stagger-list entrance animations each time a slide becomes active */
+(function () {
+  function replay(slide) {
+    slide.querySelectorAll('.anim-stagger-list').forEach(function (el) {
+      el.classList.remove('anim-stagger-list');
+      void el.offsetWidth;            // force reflow so the animation restarts
+      el.classList.add('anim-stagger-list');
+    });
+  }
+  function init() {
+    var deck = document.querySelector('.deck');
+    if (!deck) return;
+    deck.querySelectorAll('.slide').forEach(function (sl) {
+      new MutationObserver(function () {
+        if (sl.classList.contains('is-active')) replay(sl);
+      }).observe(sl, { attributes: true, attributeFilter: ['class'] });
+    });
+  }
+  document.readyState === 'loading'
+    ? document.addEventListener('DOMContentLoaded', init)
+    : init();
+})();
+</script>
 </body>
 </html>
